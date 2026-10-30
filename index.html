@@ -3,285 +3,400 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>e-Portfolio | ENSEEIHT</title>
+    <title>Joel Delaroque | e-Portfolio ENSEEIHT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #003366;
-            --secondary-color: #0066cc;
-            --bg-color: #f8f9fa;
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --bg: #f8fafc;
             --card-bg: #ffffff;
-            --text-color: #333333;
-            --border-color: #e2e8f0;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+            --shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
         }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
             line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
+        /* --- NAVBAR STYLES --- */
         header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-
-        header h1 { margin: 0; font-size: 2.2rem; }
-        header p { margin: 0.5rem 0 0; font-weight: 300; opacity: 0.9; }
-
-        nav {
-            background-color: #ffffff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
-            z-index: 100;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
         }
 
-        .nav-tabs {
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+        }
+
+        .brand {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
             list-style: none;
-            margin: 0;
-            padding: 0;
             flex-wrap: wrap;
         }
 
-        .nav-tabs li { margin: 0; }
-
-        .nav-tabs button {
+        .nav-links button {
             background: none;
             border: none;
-            padding: 1rem 1.2rem;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-color);
+            padding: 0.5rem 0.9rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
             cursor: pointer;
-            transition: all 0.3s ease;
-            border-bottom: 3px solid transparent;
+            border-radius: 6px;
+            transition: all 0.2s ease;
         }
 
-        .nav-tabs button:hover, .nav-tabs button.active {
-            color: var(--secondary-color);
-            border-bottom-color: var(--secondary-color);
+        .nav-links button:hover, .nav-links button.active {
+            color: var(--accent);
+            background-color: var(--badge-bg);
         }
 
+        /* --- LAYOUT --- */
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 2rem auto;
-            padding: 0 1rem;
+            padding: 0 1.5rem;
         }
 
         .tab-content {
             display: none;
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            animation: fadeIn 0.4s ease-in-out;
         }
 
         .tab-content.active { display: block; }
 
-        h2 { color: var(--primary-color); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; }
-        h3 { color: var(--secondary-color); margin-top: 1.5rem; }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
         }
+
+        /* --- HERO SECTION (WELCOME) --- */
+        .hero-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+
+        .hero-title { font-size: 2.2rem; color: var(--primary); font-weight: 700; }
+        .hero-subtitle { font-size: 1.15rem; color: var(--accent); font-weight: 600; margin-bottom: 0.8rem; }
+        .hero-desc { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 1.2rem; }
+
+        .tag-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.8rem; }
+        .tag {
+            background-color: var(--badge-bg);
+            color: var(--badge-text);
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* --- BUTTONS --- */
+        .btn-group { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.5rem; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1.25rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .btn-primary { background-color: var(--accent); color: white; }
+        .btn-primary:hover { background-color: var(--accent-hover); }
+        .btn-secondary { background-color: #f1f5f9; color: var(--primary); border: 1px solid var(--border); }
+        .btn-secondary:hover { background-color: #e2e8f0; }
+
+        /* --- CARDS & GRID --- */
+        .section-header { margin-bottom: 1.5rem; }
+        .section-header h2 { font-size: 1.6rem; color: var(--primary); }
+        .section-header p { color: var(--text-muted); }
+
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem; }
 
         .card {
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 1.2rem;
-            background-color: #fafafa;
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px -5px rgba(0,0,0,0.08); }
 
-        .btn {
-            display: inline-block;
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 0.5rem 1rem;
-            text-decoration: none;
-            border-radius: 4px;
-            margin-top: 0.5rem;
-        }
+        .card h3 { font-size: 1.15rem; color: var(--primary); margin-bottom: 0.5rem; }
+        .card h4 { font-size: 1rem; color: var(--accent); margin-bottom: 0.4rem; }
+        .card p { font-size: 0.92rem; color: var(--text-muted); margin-bottom: 0.8rem; }
 
-        .btn:hover { background-color: var(--primary-color); }
-
+        /* --- FOOTER --- */
         footer {
             text-align: center;
-            padding: 2rem;
-            color: #777;
-            font-size: 0.9rem;
+            padding: 2.5rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+            background: var(--card-bg);
+        }
+
+        @media (max-width: 768px) {
+            .btn-group { justify-content: flex-start; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Joel Delaroque</h1>
-        <p>Élève-Ingénieur à l'INP-ENSEEIHT | e-Portfolio</p>
+        <div class="nav-container">
+            <a href="#" class="brand">Joel DELAROQUE</a>
+            <ul class="nav-links">
+                <li><button class="active" onclick="openTab(event, 'welcome')">Welcome</button></li>
+                <li><button onclick="openTab(event, 'engineering')">Engineering</button></li>
+                <li><button onclick="openTab(event, 'civic')">Engagement</button></li>
+                <li><button onclick="openTab(event, 'mobility')">Mobility</button></li>
+                <li><button onclick="openTab(event, 'careers')">Careers</button></li>
+                <li><button onclick="openTab(event, 'sports')">Activities</button></li>
+            </ul>
+        </div>
     </header>
-
-    <nav>
-        <ul class="nav-tabs">
-            <li><button class="active" onclick="openTab(event, 'welcome')">Welcome</button></li>
-            <li><button onclick="openTab(event, 'engineering')">Engineering Courses</button></li>
-            <li><button onclick="openTab(event, 'civic')">Civic Engagement</button></li>
-            <li><button onclick="openTab(event, 'mobility')">Mobility</button></li>
-            <li><button onclick="openTab(event, 'careers')">Careers</button></li>
-            <li><button onclick="openTab(event, 'sports')">Sports & Interests</button></li>
-        </ul>
-    </nav>
 
     <div class="container">
 
-        <!-- 1. WELCOME -->
+        <!-- 1. WELCOME SECTION -->
         <section id="welcome" class="tab-content active">
-            <h2>Welcome</h2>
-            <p>Bienvenue sur mon e-portfolio académique et professionnel développé dans le cadre de ma formation à l'INP-ENSEEIHT.</p>
-            <div class="card">
-                <h3>À propos de moi</h3>
-                <p>Après 2 ans en classe préparatoire MPI (Maths, Physique et Informatique),
-                    j'ai intégré l'école d'ingénieur de l'ENSEEIHT (N7) pour étudier les systèmes électriques, énergétiques, électroniques et automatiques.
-                    De nature créative, intéressé par la conception artistique, je souhaite intégrer une dimension créative dans ma future vie professionnelle d'ingénieur. </p>
+            <div class="hero-card">
+                <h1 class="hero-title">Joel Delaroque</h1>
+                <div class="hero-subtitle">Élève-Ingénieur en 3EA (Électrique, Électronique, Automatique)</div>
+                <p class="hero-desc">
+                    Issu de classe préparatoire scientifique MPI (Lycée Thiers), j'étudie les systèmes électriques, énergétiques, électroniques et automatiques à l'INP-ENSEEIHT. Passionné par l'innovation visuelle, je souhaite marier la rigueur d'ingénierie et la conception créative dans mes projets.
+                </p>
+                <div class="tag-list">
+                    <span class="tag">INP-ENSEEIHT Toulouse</span>
+                    <span class="tag">Filière 3EA</span>
+                    <span class="tag">ex-CPGE MPI</span>
+                    <span class="tag">Ingénierie & Créativité</span>
+                </div>
+                <div class="btn-group">
+                    <a href="https://www.linkedin.com/in/votre-nom-utilisateur" class="btn btn-primary" target="_blank" rel="noopener">
+                        💼 Profil LinkedIn
+                    </a>
+
+                    <a href="CV_Joel_Delaroque_FR.pdf" class="btn btn-secondary" download>
+                        📄 Télécharger CV (PDF)
+                    </a>
+                </div>
             </div>
         </section>
 
-        <!-- 2. ENGINEERING COURSES -->
+        <!-- 2. ENGINEERING SECTION -->
         <section id="engineering" class="tab-content">
-            <h2>Engineering Courses & Projects</h2>
-            <p>Présentation de mes projets académiques et compétences techniques acquises à l'ENSEEIHT.</p>
-            <div class="grid">
+            <div class="section-header">
+                <h2>Engineering & Technical Projects</h2>
+                <p>Compétences scientifiques, réalisations techniques et projets d'ingénierie 3EA.</p>
+            </div>
+
+            <div class="grid-2">
                 <div class="card">
-                    <h3>Projet Académique 1</h3>
-                    <p><strong>Description :</strong> Résumé du projet d'ingénierie.</p>
-                    <p><strong>Technologies utilisées :</strong> Python, MATLAB, C++, etc.</p>
+                    <span class="tag" style="margin-bottom:0.5rem; display:inline-block;">Projet Majeur 2026</span>
+                    <h3>Hackathon Défense & Drones</h3>
+                    <h4>Ministère des Armées / Armée française</h4>
+                    <p>
+                        Développement intensif en 1 journée d'une application de calcul de position optimale de drones pour des missions de surveillance tactique.
+                    </p>
+                    <div class="tag-list">
+                        <span class="tag">Python</span>
+                        <span class="tag">Optimisation Spatiale</span>
+                        <span class="tag">Algorithmique</span>
+                        <span class="tag">Travail sous Pression</span>
+                    </div>
                 </div>
+
                 <div class="card">
-                    <h3>Projet Académique 2</h3>
-                    <p><strong>Description :</strong> Résumé du second projet principal.</p>
-                    <p><strong>Résultats :</strong> Objectifs atteints et livrables.</p>
+                    <span class="tag" style="margin-bottom:0.5rem; display:inline-block;">Formation Académique</span>
+                    <h3>Projets & Travaux Pratiques 3EA</h3>
+                    <h4>INP-ENSEEIHT</h4>
+                    <p>
+                        Modélisation de circuits électriques, traitement du signal, asservissement de systèmes automatiques et conversion d'énergie.
+                    </p>
+                    <div class="tag-list">
+                        <span class="tag">Électronique</span>
+                        <span class="tag">Automatique</span>
+                        <span class="tag">C / C++</span>
+                        <span class="tag">MATLAB/Simulink</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 1.5rem;">
+                <h3>Compétences Techniques & Outils</h3>
+                <div class="grid-3" style="margin-top: 1rem; box-shadow:none;">
+                    <div>
+                        <h4>Sciences & Ingénierie</h4>
+                        <p>Mathématiques appliquées, Physique, Théorie des circuits, Systèmes automatiques, Conversion d'énergie.</p>
+                    </div>
+                    <div>
+                        <h4>Informatique & Code</h4>
+                        <p>Python, C, C++, OCaml, SQL.</p>
+                    </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- 3. CIVIC ENGAGEMENT -->
+        <!-- 3. CIVIC ENGAGEMENT SECTION -->
         <section id="civic" class="tab-content">
-            <h2>Sustainability & Civic Engagement</h2>
-            <p>Engagement sociétal, RSE et actions associatives (Objectif : 40h de sensibilisation/engagement).</p>
+            <div class="section-header">
+                <h2>Sustainability & Civic Engagement</h2>
+                <p>Engagement sociétal et responsabilité environnementale à l'N7 [cite: 43, 69, 117].</p>
+            </div>
+
             <div class="card">
-                <h3>Actions & Initiatives RSE</h3>
-                <p>Décrivez ici vos activités associatives, bénévolat ou projets à impact social et environnemental (ex: WomeN7, tutorat, tri/écologie).</p>
+                <h3>Engagement RSE & Projets Citoyens</h3>
+                <p>
+                    Participation aux modules de sensibilisation aux enjeux écologiques et sociétaux au sein du parcours CAM[cite: 114, 117]. Sensibilisé à l'impact environnemental des systèmes énergétiques et à l'inclusivité dans les métiers de l'ingénierie (ex. initiatives WomeN7)[cite: 117].
+                </p>
             </div>
         </section>
 
-        <!-- 4. MOBILITY -->
+        <!-- 4. MOBILITY SECTION -->
         <section id="mobility" class="tab-content">
-            <h2>International Mobility</h2>
-            <p>Mon projet d'expérience internationale obligatoire dans le cadre du diplôme d'ingénieur.</p>
+            <div class="section-header">
+                <h2>International Mobility</h2>
+                <p>Projet d'expérience internationale de 17 semaines au cours de mon cursus d'ingénieur[cite: 43, 69, 114].</p>
+            </div>
+
             <div class="card">
-                <h3>Objectif de Mobilité</h3>
-                <p>Présentation de votre projet de séjour ou stage à l'international (durée, pays visés, type d'expérience académique ou industrielle).</p>
+                <h3>Objectifs & Pistes d'Échange International</h3>
+                <p>
+                    Planification d'un semestre académique ou d'un stage technique à l'international visant à renforcer mes compétences linguistiques en anglais (niveau B2/C1)[cite: 43, 69, 114] et à explorer les technologies d'ingénierie avancées en Europe.
+                </p>
             </div>
         </section>
 
-        <!-- 5. CAREERS -->
+        <!-- 5. CAREERS SECTION -->
         <section id="careers" class="tab-content">
-            <h2>Careers & Career Development</h2>
-            <p>Dossier complet du projet professionnel (Livrables CAM Module 1).</p>
-            
-            <div class="grid">
+            <div class="section-header">
+                <h2>Career Development</h2>
+                <p>Projet professionnel, dossier de candidatures, elevator pitch et analyses de rôles modèles[cite: 9, 50, 141].</p>
+            </div>
+
+            <div class="grid-2">
                 <div class="card">
                     <h3>CV & Profils Professionnels</h3>
-                    <p>Vous pouvez télécharger mon CV sous format PDF :</p>
-                    
-                    <a href="CV_Joel_Delaroque_FR.pdf" class="btn" target="_blank" download>
-                        Télécharger CV (Français)
-                    </a>
-                    <br>
-                    <a href="CV_Joel_Delaroque_EN.pdf" class="btn" target="_blank" download>
-                        Download Resume (English)
-                    </a>
-                    <br>
-                    
-                    <a href="www.linkedin.com/in/joel-delaroque-649b983a5" class="btn" target="_blank">Mon Profil LinkedIn</a>
+                    <p>Téléchargez mes CVs au format PDF et découvrez mes réseaux[cite: 9, 50, 141] :</p>
+                    <div class="btn-group">
+                        <a href="CV_Joel_Delaroque_FR.pdf" class="btn btn-primary" download> CV Français (PDF)</a>
+                        <a href="CV_Joel_Delaroque_EN.pdf" class="btn btn-secondary" download> Resume English (PDF)</a>
+                        <a href="www.linkedin.com/in/joel-delaroque-649b983a5" class="btn btn-secondary" target="_blank" rel="noopener"> Mon LinkedIn</a>
+                    </div>
                 </div>
 
                 <div class="card">
                     <h3>Elevator Pitch Video (2-3 min)</h3>
-                    <p><strong>Structure :</strong> Present + Past (brief) + Future</p>
-                    <p>Insérez ici votre vidéo intégrée (iFrame YouTube/Vimeo) ou le lien de visionnage.</p>
+                    <p><strong>Structure :</strong> Present + Past (brief) + Future[cite: 9, 16, 50, 137, 141]</p>
+                    <p>Vidéo présentant ma proposition de valeur unique (UVP) et mes ambitions en ingénierie 3EA[cite: 9, 50, 125, 141].</p>
+                    <a href="#" class="btn btn-secondary" style="margin-top:0.5rem;">▶️ Visionner la vidéo</a>
                 </div>
             </div>
 
-            <h3>Analyse de 3 Rôles Modèles</h3>
-            <div class="grid">
+            <h3 style="margin: 1.5rem 0 1rem; color: var(--primary);">Analyse de 3 Rôles Modèles & Mobilités Associées</h3>
+            <div class="grid-3">
                 <div class="card">
-                    <h4>Rôle Modèle 1</h4>
-                    <p><strong>Poste :</strong> Intitulé du poste</p>
-                    <p><strong>Enseignements :</strong> Compétences clés et réseau (My Job Glasses / LinkedIn).</p>
+                    <h4>1. Ingénieur Systèmes & Drones</h4>
+                    <p><strong>Enseignements (MyJobGlasses) :</strong> Importance de l'optimisation algorithmique et de la gestion de projets complexes[cite: 87, 91].</p>
+                    <span class="tag">Mobilité : Stage R&D en Europe</span>
                 </div>
                 <div class="card">
-                    <h4>Rôle Modèle 2</h4>
-                    <p><strong>Poste :</strong> Intitulé du poste</p>
-                    <p><strong>Enseignements :</strong> Parcours académique et carrière.</p>
+                    <h4>2. Ingénieur Électronique & Design</h4>
+                    <p><strong>Enseignements (Alumni N7) :</strong> Intégration du design et de l'ergonomie dans la conception de matériels électroniques.</p>
+                    <span class="tag">Mobilité : Échange Universitaire</span>
                 </div>
                 <div class="card">
-                    <h4>Rôle Modèle 3</h4>
-                    <p><strong>Poste :</strong> Intitulé du poste</p>
-                    <p><strong>Enseignements :</strong> Secteur d'activité et opportunités.</p>
-                </div>
-            </div>
-
-            <h3>3 Projets de Mobilité Internationale Alignés</h3>
-            <div class="grid">
-                <div class="card">
-                    <h4>Projet Mobilité 1</h4>
-                    <p>Aligné avec le profil de rôle modèle 1.</p>
-                </div>
-                <div class="card">
-                    <h4>Projet Mobilité 2</h4>
-                    <p>Aligné avec le profil de rôle modèle 2.</p>
-                </div>
-                <div class="card">
-                    <h4>Projet Mobilité 3</h4>
-                    <p>Aligné avec le profil de rôle modèle 3.</p>
+                    <h4>3. Chef de Projet Énergie & Innovation</h4>
+                    <p><strong>Enseignements (LinkedIn) :</strong> Pilotage d'équipes pluridisciplinaires et sensibilité aux enjeux de transition énergétique[cite: 101, 108].</p>
+                    <span class="tag">Mobilité : Stage Industriel</span>
                 </div>
             </div>
         </section>
 
-        <!-- 6. SPORTS & INTERESTS -->
+        <!-- 6. ACTIVITIES SECTION -->
         <section id="sports" class="tab-content">
-            <h2>Sports & Interests</h2>
-            <p>Activités extra-académiques, pratiques sportives, passions et centres d'intérêt.</p>
-            <div class="card">
-                <h3>Passions & Sports</h3>
-                <p>Décrivez vos activités sportives (pratique en club, BDS) ainsi que vos centres d'intérêt personnels.</p>
+            <div class="section-header">
+                <h2>Sports & Personal Activities</h2>
+                <p>Passions, projets vidéo, engagement associatif et activités sportives[cite: 43, 44, 69, 77].</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Création Visuelle & Vidéo</h3>
+                    <p>
+                        Membre de l'association vidéo scolaire : écriture, cadrage, réalisation et montage audiovisuel.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Sports & Dépassement</h3>
+                    <p>
+                        Pratique régulière de l'escalade et du badminton.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Activités de Plein Air</h3>
+                    <p>
+                        Bivouac et randonnée en montagne.
+                    </p>
+                </div>
             </div>
         </section>
 
     </div>
 
     <footer>
-        <p>&copy; 2026 - e-Portfolio Évalué INP-ENSEEIHT</p>
+        <p>&copy; 2026 Joel Delaroque — e-Portfolio INP-ENSEEIHT </p>
     </footer>
 
     <script>
         function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
+            let tabcontent = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabcontent.length; i++) {
                 tabcontent[i].classList.remove("active");
             }
-            tablinks = document.getElementsByClassName("nav-tabs")[0].getElementsByTagName("button");
-            for (i = 0; i < tablinks.length; i++) {
+            let tablinks = document.getElementsByClassName("nav-links")[0].getElementsByTagName("button");
+            for (let i = 0; i < tablinks.length; i++) {
                 tablinks[i].classList.remove("active");
             }
             document.getElementById(tabName).classList.add("active");
