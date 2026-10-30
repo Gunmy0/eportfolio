@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joel Delaroque | Engineering e-Portfolio ENSEEIHT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --badge-bg: #eff6ff;
+            --badge-text: #1d4ed8;
+            --shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* --- NAVBAR STYLES --- */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+        }
+
+        .brand {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .nav-links button, .lang-btn {
+            background: none;
+            border: none;
+            padding: 0.5rem 0.9rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .nav-links button:hover, .nav-links button.active {
+            color: var(--accent);
+            background-color: var(--badge-bg);
+        }
+
+        .lang-btn {
+            border: 1px solid var(--border);
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .lang-btn:hover {
+            background-color: var(--badge-bg);
+            color: var(--accent);
+        }
+
+        /* --- LAYOUT --- */
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .tab-content.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- HERO SECTION (WELCOME) --- */
+        .hero-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+
+        .hero-title { font-size: 2.2rem; color: var(--primary); font-weight: 700; }
+        .hero-subtitle { font-size: 1.15rem; color: var(--accent); font-weight: 600; margin-bottom: 0.8rem; }
+        .hero-desc { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 1.2rem; }
+
+        .tag-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.8rem; }
+        .tag {
+            background-color: var(--badge-bg);
+            color: var(--badge-text);
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* --- BUTTONS --- */
+        .btn-group { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.5rem; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1.25rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .btn-primary { background-color: var(--accent); color: white; }
+        .btn-primary:hover { background-color: var(--accent-hover); }
+        .btn-secondary { background-color: #f1f5f9; color: var(--primary); border: 1px solid var(--border); }
+        .btn-secondary:hover { background-color: #e2e8f0; }
+
+        /* --- CARDS & GRID --- */
+        .section-header { margin-bottom: 1.5rem; }
+        .section-header h2 { font-size: 1.6rem; color: var(--primary); }
+        .section-header p { color: var(--text-muted); }
+
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem; }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px -5px rgba(0,0,0,0.08); }
+
+        .card h3 { font-size: 1.15rem; color: var(--primary); margin-bottom: 0.5rem; }
+        .card h4 { font-size: 1rem; color: var(--accent); margin-bottom: 0.4rem; }
+        .card p { font-size: 0.92rem; color: var(--text-muted); margin-bottom: 0.8rem; }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+            background: var(--card-bg);
+        }
+
+        @media (max-width: 768px) {
+            .btn-group { justify-content: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="brand">Joel DELAROQUE</a>
+            <ul class="nav-links">
+                <li><button class="active" onclick="openTab(event, 'welcome')">Welcome</button></li>
+                <li><button onclick="openTab(event, 'engineering')">Engineering</button></li>
+                <li><button onclick="openTab(event, 'civic')">Engagement</button></li>
+                <li><button onclick="openTab(event, 'mobility')">Mobility</button></li>
+                <li><button onclick="openTab(event, 'careers')">Careers</button></li>
+                <li><button onclick="openTab(event, 'sports')">Activities</button></li>
+                <li><a href="index.html" class="lang-btn">🇫🇷 FR</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- 1. WELCOME SECTION -->
+        <section id="welcome" class="tab-content active">
+            <div class="hero-card">
+                <h1 class="hero-title">Joel Delaroque</h1>
+                <div class="hero-subtitle">Engineering Student in 3EA (Electrical, Electronic & Automation)</div>
+                <p class="hero-desc">
+                    Following two years of intensive scientific preparatory classes in Mathematics, Physics & Computer Science (MPI) at Lycée Thiers, I am pursuing my engineering degree at INP-ENSEEIHT. Driven by creative vision and technology, I aim to merge engineering rigor with innovative design across electrical, energy, and automated systems.
+                </p>
+                <div class="tag-list">
+                    <span class="tag">INP-ENSEEIHT Toulouse</span>
+                    <span class="tag">3EA Program</span>
+                    <span class="tag">ex-CPGE MPI</span>
+                    <span class="tag">Engineering & Design</span>
+                </div>
+                <div class="btn-group">
+                    <a href="https://www.linkedin.com/in/votre-nom-utilisateur" class="btn btn-primary" target="_blank" rel="noopener">
+                        💼 LinkedIn Profile
+                    </a>
+                    <a href="https://github.com/joel-delaroque/eportfolio" class="btn btn-secondary" target="_blank" rel="noopener">
+                        💻 GitHub
+                    </a>
+                    <a href="CV_Joel_Delaroque_EN.pdf" class="btn btn-secondary" download>
+                        📄 Download Resume (PDF)
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. ENGINEERING SECTION -->
+        <section id="engineering" class="tab-content">
+            <div class="section-header">
+                <h2>Engineering & Technical Projects</h2>
+                <p>Scientific skills, technical achievements, and 3EA engineering projects.</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <span class="tag" style="margin-bottom:0.5rem; display:inline-block;">Major Project 2026</span>
+                    <h3>Aeris: Defense & Drone Hackathon</h3>
+                    <h4>French Ministry of Armed Forces / French Army</h4>
+                    <p>
+                        Intensive 1-day hackathon developing a decision-support application calculating optimal drone placements and airspace management for tactical surveillance missions.
+                    </p>
+                    <div class="tag-list" style="margin-bottom: 1.2rem;">
+                        <span class="tag">Python</span>
+                        <span class="tag">Spatial Optimization</span>
+                        <span class="tag">Algorithm Design</span>
+                        <span class="tag">Agile Teamwork</span>
+                    </div>
+                    <a href="https://aeris-ten-nu.vercel.app/" class="btn btn-secondary" target="_blank" rel="noopener">
+                        🚀 Explore Aeris Application
+                    </a>
+                </div>
+
+                <div class="card">
+                    <span class="tag" style="margin-bottom:0.5rem; display:inline-block;">Academic Curriculum</span>
+                    <h3>3EA Engineering Projects & Lab Work</h3>
+                    <h4>INP-ENSEEIHT</h4>
+                    <p>
+                        Electric circuit modeling, signal processing, automated system feedback loops, power electronics, and energy conversion systems.
+                    </p>
+                    <div class="tag-list">
+                        <span class="tag">Electronics</span>
+                        <span class="tag">Automation</span>
+                        <span class="tag">C / C++</span>
+                        <span class="tag">MATLAB/Simulink</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 1.5rem;">
+                <h3>Technical Skills & Core Toolset</h3>
+                <div class="grid-3" style="margin-top: 1rem; box-shadow:none;">
+                    <div>
+                        <h4>Science & Engineering</h4>
+                        <p>Applied Mathematics, Engineering Physics, Circuit Analysis, Automated Control Systems, Energy Conversion.</p>
+                    </div>
+                    <div>
+                        <h4>Computer Science & Code</h4>
+                        <p>Python, C, C++, OCaml, SQL, Git, MATLAB/Simulink basics, Spatial Algorithms.</p>
+                    </div>
+                    <div>
+                        <h4>Creative Tools</h4>
+                        <p>Video Editing & Directing, Photography, Adobe Creative Suite, Visual & Framing Design.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. CIVIC ENGAGEMENT SECTION -->
+        <section id="civic" class="tab-content">
+            <div class="section-header">
+                <h2>Sustainability & Civic Engagement</h2>
+                <p>Societal involvement, CSR, and environmental responsibility at ENSEEIHT (40-hour requirement)[cite: 43, 69, 117].</p>
+            </div>
+
+            <div class="card">
+                <h3>CSR Engagement & Citizen Initiatives</h3>
+                <p>
+                    Active participation in sustainability and social responsibility modules within the CAM program[cite: 114, 117]. Focused on reducing the environmental impact of energy systems and promoting gender equality in engineering disciplines (e.g., WomeN7 initiative)[cite: 117].
+                </p>
+            </div>
+        </section>
+
+        <!-- 4. MOBILITY SECTION -->
+        <section id="mobility" class="tab-content">
+            <div class="section-header">
+                <h2>International Mobility</h2>
+                <p>Mandatory 17-week international experience project during the 3-year engineering degree[cite: 43, 69, 114].</p>
+            </div>
+
+            <div class="card">
+                <h3>International Objectives & Projects</h3>
+                <p>
+                    Planning an academic semester exchange or an R&D technical internship abroad to refine fluent professional English (B2/C1 level)[cite: 43, 69, 114] and explore advanced European engineering technologies.
+                </p>
+            </div>
+        </section>
+
+        <!-- 5. CAREERS SECTION -->
+        <section id="careers" class="tab-content">
+            <div class="section-header">
+                <h2>Career Development</h2>
+                <p>Professional project, application package, elevator pitch, and role model analyses[cite: 9, 50, 141].</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Resumes & Professional Profiles</h3>
+                    <p>Download my updated resumes and connect with my network[cite: 9, 50, 141]:</p>
+                    <div class="btn-group">
+                        <a href="CV_Joel_Delaroque_EN.pdf" class="btn btn-primary" download>🇬🇧 Download Resume (PDF)</a>
+                        <a href="CV_Joel_Delaroque_FR.pdf" class="btn btn-secondary" download>📄 French CV (PDF)</a>
+                        <a href="https://www.linkedin.com/in/votre-nom-utilisateur?locale=en_US" class="btn btn-secondary" target="_blank" rel="noopener">💼 LinkedIn Profile</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Elevator Pitch Video (2-3 min)</h3>
+                    <p><strong>Structure:</strong> Present + Past (brief) + Future[cite: 9, 16, 50, 137, 141]</p>
+                    <p>English pitch highlighting my Unique Value Proposition (UVP) and engineering ambitions[cite: 9, 50, 125, 141].</p>
+                    <a href="#" class="btn btn-secondary" style="margin-top:0.5rem;">▶️ Watch Video Pitch</a>
+                </div>
+            </div>
+
+            <h3 style="margin: 1.5rem 0 1rem; color: var(--primary);">Analysis of 3 Role Models & Aligned Mobilities</h3>
+            <div class="grid-3">
+                <div class="card">
+                    <h4>1. Systems & Drone Engineer</h4>
+                    <p><strong>Key Insights (MyJobGlasses):</strong> Master algorithmic optimization and manage complex technical systems[cite: 87, 91].</p>
+                    <span class="tag">Mobility: European R&D Internship</span>
+                </div>
+                <div class="card">
+                    <h4>2. Electronic & Design Engineer</h4>
+                    <p><strong>Key Insights (N7 Alumni):</strong> Integrate user ergonomics and aesthetic design into hardware engineering.</p>
+                    <span class="tag">Mobility: University Academic Exchange</span>
+                </div>
+                <div class="card">
+                    <h4>3. Energy & Innovation Project Manager</h4>
+                    <p><strong>Key Insights (LinkedIn):</strong> Lead cross-functional teams and address energy transition challenges[cite: 101, 108].</p>
+                    <span class="tag">Mobility: Industrial Internship</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. ACTIVITIES SECTION -->
+        <section id="sports" class="tab-content">
+            <div class="section-header">
+                <h2>Sports & Personal Activities</h2>
+                <p>Passions, video projects, student associations, and sports[cite: 43, 44, 69, 77].</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Visual Creation & Filmmaking</h3>
+                    <p>
+                        Active member of the school video association: scriptwriting, camera operating, video editing, and media project management.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Sports & Team Spirit</h3>
+                    <p>
+                        Regular practice of rock climbing and badminton (building focus, agility, and perseverance).
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Outdoor Activities & Autonomy</h3>
+                    <p>
+                        Bivouacking and mountain hiking (logistics management, self-reliance, and risk management in nature).
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Joel Delaroque — e-Portfolio INP-ENSEEIHT | CAM Module Evaluation</p>
+    </footer>
+
+    <script>
+        function openTab(evt, tabName) {
+            let tabcontent = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            let tablinks = document.getElementsByClassName("nav-links")[0].getElementsByTagName("button");
+            for (let i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
