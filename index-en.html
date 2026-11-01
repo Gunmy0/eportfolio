@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joel Delaroque | Engineering e-Portfolio ENSEEIHT</title>
+    <title>Joel Delaroque | e-Portfolio ENSEEIHT</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -21,6 +21,12 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -168,8 +174,17 @@
             border: 1px solid var(--border);
             box-shadow: var(--shadow);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
+            overflow: hidden;
         }
         .card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px -5px rgba(0,0,0,0.08); }
+
+        .card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
 
         .card h3 { font-size: 1.15rem; color: var(--primary); margin-bottom: 0.5rem; }
         .card h4 { font-size: 1rem; color: var(--accent); margin-bottom: 0.4rem; }
@@ -216,20 +231,17 @@
                 <h1 class="hero-title">Joel Delaroque</h1>
                 <div class="hero-subtitle">Engineering Student in 3EA (Electrical, Electronic & Automation)</div>
                 <p class="hero-desc">
-                    Following two years of intensive scientific preparatory classes in Mathematics, Physics & Computer Science (MPI) at Lycée Thiers, I am pursuing my engineering degree at INP-ENSEEIHT. Driven by creative vision and technology, I aim to merge engineering rigor with innovative design across electrical, energy, and automated systems.
+                    Following two years of intensive scientific preparatory classes in Mathematics, Physics & Computer Science (MPI) at Lycée Thiers, I am studying electrical, energy, electronic, and automation systems at INP-ENSEEIHT. Driven by visual innovation, I aim to combine engineering rigor with creative design across my projects.
                 </p>
                 <div class="tag-list">
                     <span class="tag">INP-ENSEEIHT Toulouse</span>
-                    <span class="tag">3EA Program</span>
+                    <span class="tag">3EA Track</span>
                     <span class="tag">ex-CPGE MPI</span>
-                    <span class="tag">Engineering & Design</span>
+                    <span class="tag">Engineering & Creativity</span>
                 </div>
                 <div class="btn-group">
-                    <a href="https://www.linkedin.com/in/votre-nom-utilisateur" class="btn btn-primary" target="_blank" rel="noopener">
+                    <a href="https://www.linkedin.com/in/joel-delaroque-649b983a5" class="btn btn-primary" target="_blank" rel="noopener">
                         💼 LinkedIn Profile
-                    </a>
-                    <a href="https://github.com/joel-delaroque/eportfolio" class="btn btn-secondary" target="_blank" rel="noopener">
-                        💻 GitHub
                     </a>
                     <a href="CV_Joel_Delaroque_EN.pdf" class="btn btn-secondary" download>
                         📄 Download Resume (PDF)
@@ -247,29 +259,30 @@
 
             <div class="grid-2">
                 <div class="card">
-                    <span class="tag" style="margin-bottom:0.5rem; display:inline-block;">Major Project 2026</span>
+                    <img src="drone.jpg" alt="Tactical drone in flight" class="card-img">
+                    <span class="tag" style="margin-bottom:0.5rem; display:inline-block;">Project 2026</span>
                     <h3>Aeris: Defense & Drone Hackathon</h3>
                     <h4>French Ministry of Armed Forces / French Army</h4>
                     <p>
-                        Intensive 1-day hackathon developing a decision-support application calculating optimal drone placements and airspace management for tactical surveillance missions.
+                        Intensive 1-day hackathon developing a decision-support application calculating optimal drone placements for tactical surveillance missions.
                     </p>
                     <div class="tag-list" style="margin-bottom: 1.2rem;">
                         <span class="tag">Python</span>
                         <span class="tag">Spatial Optimization</span>
-                        <span class="tag">Algorithm Design</span>
-                        <span class="tag">Agile Teamwork</span>
+                        <span class="tag">Algorithmics</span>
+                        <span class="tag">Teamwork Under Pressure</span>
                     </div>
                     <a href="https://aeris-ten-nu.vercel.app/" class="btn btn-secondary" target="_blank" rel="noopener">
-                        🚀 Explore Aeris Application
+                        🚀 Discover the Aeris Application
                     </a>
                 </div>
 
                 <div class="card">
-                    <span class="tag" style="margin-bottom:0.5rem; display:inline-block;">Academic Curriculum</span>
+                    <span class="tag" style="margin-bottom:0.5rem; display:inline-block;">Academic Background</span>
                     <h3>3EA Engineering Projects & Lab Work</h3>
                     <h4>INP-ENSEEIHT</h4>
                     <p>
-                        Electric circuit modeling, signal processing, automated system feedback loops, power electronics, and energy conversion systems.
+                        Electric circuit modeling, signal processing, automated system control, and energy conversion.
                     </p>
                     <div class="tag-list">
                         <span class="tag">Electronics</span>
@@ -281,19 +294,19 @@
             </div>
 
             <div class="card" style="margin-top: 1.5rem;">
-                <h3>Technical Skills & Core Toolset</h3>
+                <h3>Technical Skills & Tools</h3>
                 <div class="grid-3" style="margin-top: 1rem; box-shadow:none;">
                     <div>
-                        <h4>Science & Engineering</h4>
-                        <p>Applied Mathematics, Engineering Physics, Circuit Analysis, Automated Control Systems, Energy Conversion.</p>
+                        <h4>Sciences & Engineering</h4>
+                        <p>Applied Mathematics, Physics, Circuit Theory, Automatic Systems, Energy Conversion.</p>
                     </div>
                     <div>
                         <h4>Computer Science & Code</h4>
-                        <p>Python, C, C++, OCaml, SQL, Git, MATLAB/Simulink basics, Spatial Algorithms.</p>
+                        <p>Python, C, C++, OCaml, SQL.</p>
                     </div>
                     <div>
                         <h4>Creative Tools</h4>
-                        <p>Video Editing & Directing, Photography, Adobe Creative Suite, Visual & Framing Design.</p>
+                        <p>Video Editing & Directing, Photography, Adobe Suite, Visual Design & Framing.</p>
                     </div>
                 </div>
             </div>
@@ -303,14 +316,29 @@
         <section id="civic" class="tab-content">
             <div class="section-header">
                 <h2>Sustainability & Civic Engagement</h2>
-                <p>Societal involvement, CSR, and environmental responsibility at ENSEEIHT (40-hour requirement)[cite: 43, 69, 117].</p>
+                <p>Societal involvement, CSR, and environmental responsibility.</p>
             </div>
 
             <div class="card">
-                <h3>CSR Engagement & Citizen Initiatives</h3>
+                <img src="FP-logo-complet-01.png" alt="Futurs Proches Logo" style="max-height: 170px; width: auto; object-fit: contain; margin-bottom: 1.2rem; display: block;">
+                <span class="tag" style="margin-bottom:0.5rem; display:inline-block;">Event & Transitions</span>
+                <h3>"Futurs Proches" Festival</h3>
+                <h4>Université de Toulouse & Partner Institutions</h4>
                 <p>
-                    Active participation in sustainability and social responsibility modules within the CAM program[cite: 114, 117]. Focused on reducing the environmental impact of energy systems and promoting gender equality in engineering disciplines (e.g., WomeN7 initiative)[cite: 117].
+                    Active participation in the campus transition festival addressing ecological, societal, and digital challenges in Toulouse. This experience expanded my perspective on key modern issues through two main focus areas:
                 </p>
+                <div style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 0.8rem;">
+                    <ul style="margin-left: 1.2rem; margin-bottom: 0.8rem;">
+                        <li><strong>Digital Impacts & AI:</strong> Attended a conference on the societal and ethical implications of generative artificial intelligence.</li>
+                        <li><strong>Inclusivity & Intercultural Diversity:</strong> Took part in an interactive workshop analyzing global gender stereotypes (workplace equity, parental leave policies, and sports parity worldwide).</li>
+                    </ul>
+                </div>
+                <div class="tag-list">
+                    <span class="tag">Societal Transitions</span>
+                    <span class="tag">AI Ethics</span>
+                    <span class="tag">Diversity & Equity</span>
+                    <span class="tag">Global Awareness</span>
+                </div>
             </div>
         </section>
 
@@ -318,13 +346,50 @@
         <section id="mobility" class="tab-content">
             <div class="section-header">
                 <h2>International Mobility</h2>
-                <p>Mandatory 17-week international experience project during the 3-year engineering degree[cite: 43, 69, 114].</p>
+                <p>Mandatory international experience project (minimum 17 weeks) as part of the ENSEEIHT engineering degree.</p>
             </div>
 
-            <div class="card">
-                <h3>International Objectives & Projects</h3>
+            <div class="card" style="margin-bottom: 1.5rem;">
+                <img src="mobilité.jpg" alt="International Mobility World Map" class="card-img" style="height: 220px;">
+                <h3>My Project & Objectives</h3>
                 <p>
-                    Planning an academic semester exchange or an R&D technical internship abroad to refine fluent professional English (B2/C1 level)[cite: 43, 69, 114] and explore advanced European engineering technologies.
+                    International mobility is a key component of the ENSEEIHT curriculum, taking the form of an academic semester, a technical internship, or a gap year abroad. My goal is to complete an exchange semester or internship overseas to advance my skills in <strong>automation, advanced electronics, embedded systems, and energy management</strong>, while blending technical rigor with creative design.
+                </p>
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <span class="tag" style="margin-bottom:0.5rem; display:inline-block;">Destination 1</span>
+                    <h3>Sweden</h3>
+                    <h4>Sustainable Engineering & Control Systems</h4>
+                    <p>
+                        Conversational in Swedish and keen on the Scandinavian innovation model, I am targeting top-tier institutions such as <strong>Luleå University of Technology</strong> and <strong>Uppsala University</strong> for an academic semester exchange.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <span class="tag" style="margin-bottom:0.5rem; display:inline-block;">Destination 2</span>
+                    <h3>Germany (Munich)</h3>
+                    <h4>Embedded Systems & Industry</h4>
+                    <p>
+                        Munich is a major European engineering hub (TU München, automotive & aerospace R&D centers). I aim to secure an industrial or laboratory internship focusing on embedded systems design and advanced control engineering.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <span class="tag" style="margin-bottom:0.5rem; display:inline-block;">Destination 3</span>
+                    <h3>China</h3>
+                    <h4>Technological Ecosystem & Robotics</h4>
+                    <p>
+                        China is a global driver of energy transition, robotics, and hardware electronics manufacturing. An immersive experience there will allow me to thrive inside a high-tech ecosystem and observe large-scale manufacturing processes.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 1.5rem;">
+                <h3>Professional & Personal Benefits</h3>
+                <p>
+                    This international project will serve as a crucial stepping stone to reinforce technical English fluency in a professional environment (targeting B2+/C1 level), build intercultural adaptability, and collaborate within multidisciplinary engineering teams on complex projects.
                 </p>
             </div>
         </section>
@@ -333,43 +398,53 @@
         <section id="careers" class="tab-content">
             <div class="section-header">
                 <h2>Career Development</h2>
-                <p>Professional project, application package, elevator pitch, and role model analyses[cite: 9, 50, 141].</p>
+                <p>Professional goals, application package, elevator pitch, and role model analyses.</p>
             </div>
 
             <div class="grid-2">
                 <div class="card">
-                    <h3>Resumes & Professional Profiles</h3>
-                    <p>Download my updated resumes and connect with my network[cite: 9, 50, 141]:</p>
+                    <h3>Resumes & Professional Networks</h3>
+                    <p>Download my PDF resumes and explore my professional profiles:</p>
                     <div class="btn-group">
                         <a href="CV_Joel_Delaroque_EN.pdf" class="btn btn-primary" download>🇬🇧 Download Resume (PDF)</a>
                         <a href="CV_Joel_Delaroque_FR.pdf" class="btn btn-secondary" download>📄 French CV (PDF)</a>
-                        <a href="https://www.linkedin.com/in/votre-nom-utilisateur?locale=en_US" class="btn btn-secondary" target="_blank" rel="noopener">💼 LinkedIn Profile</a>
+                        <a href="https://www.linkedin.com/in/joel-delaroque-649b983a5" class="btn btn-secondary" target="_blank" rel="noopener">💼 My LinkedIn</a>
                     </div>
                 </div>
 
                 <div class="card">
-                    <h3>Elevator Pitch Video (2-3 min)</h3>
-                    <p><strong>Structure:</strong> Present + Past (brief) + Future[cite: 9, 16, 50, 137, 141]</p>
-                    <p>English pitch highlighting my Unique Value Proposition (UVP) and engineering ambitions[cite: 9, 50, 125, 141].</p>
-                    <a href="#" class="btn btn-secondary" style="margin-top:0.5rem;">▶️ Watch Video Pitch</a>
+                    <h3>Elevator Pitch Video</h3>
+                    <p>Short video highlighting my unique value proposition (UVP) and ambitions in 3EA engineering.</p>
+                    
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-top: 1rem;">
+                        <iframe src="https://www.youtube.com/embed/17m3apUTzsU" 
+                                title="Elevator Pitch Video - Joel Delaroque" 
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
                 </div>
             </div>
 
-            <h3 style="margin: 1.5rem 0 1rem; color: var(--primary);">Analysis of 3 Role Models & Aligned Mobilities</h3>
+            <h3 style="margin: 2rem 0 1rem; color: var(--primary);">Analysis of 3 Role Models & Aligned Mobilities</h3>
+
             <div class="grid-3">
                 <div class="card">
                     <h4>1. Systems & Drone Engineer</h4>
-                    <p><strong>Key Insights (MyJobGlasses):</strong> Master algorithmic optimization and manage complex technical systems[cite: 87, 91].</p>
-                    <span class="tag">Mobility: European R&D Internship</span>
+                    <p><strong>Insights (hackathon experience):</strong> Importance of algorithmic optimization and managing complex technical projects.</p>
+                    <span class="tag">Mobility: Exchange semester in Sweden</span>
                 </div>
+
                 <div class="card">
                     <h4>2. Electronic & Design Engineer</h4>
-                    <p><strong>Key Insights (N7 Alumni):</strong> Integrate user ergonomics and aesthetic design into hardware engineering.</p>
-                    <span class="tag">Mobility: University Academic Exchange</span>
+                    <p><strong>Insights (N7 Alumni):</strong> Integrating design and user ergonomics into electronic hardware engineering.</p>
+                    <span class="tag">Mobility: University Exchange</span>
                 </div>
+
                 <div class="card">
                     <h4>3. Energy & Innovation Project Manager</h4>
-                    <p><strong>Key Insights (LinkedIn):</strong> Lead cross-functional teams and address energy transition challenges[cite: 101, 108].</p>
+                    <p><strong>Insights (LinkedIn):</strong> Leading cross-functional teams and addressing clean energy transition challenges.</p>
                     <span class="tag">Mobility: Industrial Internship</span>
                 </div>
             </div>
@@ -379,26 +454,29 @@
         <section id="sports" class="tab-content">
             <div class="section-header">
                 <h2>Sports & Personal Activities</h2>
-                <p>Passions, video projects, student associations, and sports[cite: 43, 44, 69, 77].</p>
+                <p>Passions, video production, student associations, and sports.</p>
             </div>
 
             <div class="grid-3">
                 <div class="card">
+                    <img src="asso video.png" alt="Video production" class="card-img">
                     <h3>Visual Creation & Filmmaking</h3>
                     <p>
-                        Active member of the school video association: scriptwriting, camera operating, video editing, and media project management.
+                        Member of the school video association: scriptwriting, camera operation, directing, and post-production video editing.
                     </p>
                 </div>
                 <div class="card">
-                    <h3>Sports & Team Spirit</h3>
+                    <img src="escalade.jpg" alt="Rock climbing" class="card-img" style="object-fit: contain; background: #0f172a;">
+                    <h3>Sports & Personal Drive</h3>
                     <p>
-                        Regular practice of rock climbing and badminton (building focus, agility, and perseverance).
+                        Regular practice of rock climbing and badminton (developing agility, focus, and strategic thinking).
                     </p>
                 </div>
                 <div class="card">
-                    <h3>Outdoor Activities & Autonomy</h3>
+                    <img src="IMG_3273.JPG" alt="Mountain hiking" class="card-img">
+                    <h3>Outdoor Activities</h3>
                     <p>
-                        Bivouacking and mountain hiking (logistics management, self-reliance, and risk management in nature).
+                        Bivouacking and mountain hiking (autonomy, logistics planning, and risk management in natural environments).
                     </p>
                 </div>
             </div>
@@ -407,7 +485,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Joel Delaroque — e-Portfolio INP-ENSEEIHT | CAM Module Evaluation</p>
+        <p>&copy; 2026 Joel Delaroque — e-Portfolio INP-ENSEEIHT</p>
     </footer>
 
     <script>
